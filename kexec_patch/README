@@ -1,0 +1,45 @@
+ 
+The Popcorn project is subject to the
+GNU GENERAL PUBLIC LICENSE
+Copyright (c) 2012
+Antonio Barbalace, Ben Shelton
+Systems Software Research Group, Virginia Tech
+http://www.ssrg.ece.vt.edu
+
+-------------------------------------------------------------------------------
+POPCORN HACKING GUIDE - KEXEC                                14th December 2012
+-------------------------------------------------------------------------------
+
+kexec-2.0-popcorn-generic.patch
+---------------------------------------
+This patch adds to kexec two multikernel command line options to boot the
+kernels. The boot address (-a) and the boot cpu id (-b).
+Note that this is different from the 32bit version that loads a new kernel in
+the boot time reserved crash kernel memory area.
+The file kexec/kexec-elf-exec.c should be fixed to support kernel images bigger
+then 20MB. The loading routine simply copy the kernel image to the specified 
+physical address using the /dev/mem file. Again this should be fixed in a 
+further version in order to avoid the usage of /dev/mem and improve security.
+
+kexec-2.0-popcorn-syscall.patch
+---------------------------------------
+The patch contains the code to call the special multikernel syscall to boot a
+kernel (that must be previously loaded in to physical memory).
+Note that such syscall can be eliminated in order to reduce syscall pollution.
+Kernel must support the syscall in order to work, the syscall number is
+architecture dependent in the Linux kernel source code.
+
+Notes
+---------------------------------------
+These patches are necessary to load and boot a new kernel in a Linux
+multi kernel instance environment. We provide a modified version of the kernel
+that must be used along this patch and a set of tools that complete the kexec
+software. Please checkout our Linux kernel version before continue with the 
+installation.
+We also provide a series of scripts to automatically load the kernels, their 
+ramdisks and boot parameters. Please checkout our tools repository.
+
+Community
+---------------------------------------
+The Popcorn Linux website can be found at the following url:
+http://popcornlinux.org
