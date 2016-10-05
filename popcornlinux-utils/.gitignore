@@ -3,7 +3,6 @@ boot_args_*.param
 copy_ramdisk
 kexec
 mpart
-ramdisk.img
 set_boot_args
 shmtunnel
 tunnel
