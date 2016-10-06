@@ -1,4 +1,0 @@
-#!/bin/sh
-echo "welcome to Popcorn"
-mount -t proc none /proc
-ps afux

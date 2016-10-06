@@ -56,11 +56,11 @@ Select linux-3.2.14 from grub menu<br>
 
 ## 2. Setup
 ### 2.2 Setup Boot Parameter
-$ cd ~/popcorn/popcornlinux_utils<br>
+$ cd ~/popcorn/utils<br>
 $ make<br>
 $ sudo ./generate_all.sh<br><br>
 <b>Edit Boot Parameter for Tunnel Communication<br></b>
-$ cd ~/popcorn/popcornlinux_utils<br>
+$ cd ~/popcorn/utils<br>
 $ sudo vi boot_args_1.args<br>
 Then, Reduce mem to 100M(This Space will be used to tunnel communication.)<br>
 ex) mem=1792M ==> mem=1692M<br><br>
@@ -75,17 +75,17 @@ $ cat /proc/cpuinfo<br>
 $ cat /proc/meminfo<br>
 ## 4. Boot Second Kernel
 ### 4.1 Create Second Kernel Image
-$ cd ~/popcorn/popcornlinux_utils<br>
+$ cd ~/popcorn/utils<br>
 $ sudo create_elf.sh ~/linux/linux-3.2.14/vmlinux<br>
 $ ls vmlinux.elf
 ### 4.2 Boot Second Kernel
 <b>Now, Boot Second Kernel<br></b>
-$ cd ~/popcorn/popcornlinux_utils<br>
+$ cd ~/popcorn/utils<br>
 $ sudo ./mklinux_boot.sh 1<br>
 ## 5. Communication
 <b>Popcorn Linux supports communication between kernel by tap or virtual serial.<br></b>
 ### 5.1 SSH
-$ cd ~/popcorn/popcornlinux_utils<br>
+$ cd ~/popcorn/utils<br>
 $ ./tunnelize.sh<br>
 $ ping 10.1.2.2<br>
 $ ssh root@10.1.2.2<br>
