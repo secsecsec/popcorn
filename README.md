@@ -13,6 +13,7 @@ Our test environment is as follows.
 <center>Storage | <center>16GB
 <center>CPUs | <center>2
 
+
 ### 1.1 Install Kernel
 **Install Package for Kernel Compile**    
 ~~~~
@@ -45,16 +46,16 @@ $ patch -p1 < ~/popcorn/PopcornLinux.patch
 $ sudo make menuconfig  
 ~~~~
 Load 'ben_config' file, save '.config' file and Exit.  
-> 1. select 'Load an Alternate Configuration File', 
-> and enter the name of the configuration file, 'ben_config'.  
-> 2. select 'Save an Alternate Configuration File', 
-> and enter the name of the configuration file, '.config'.  
+> eg) select 'Load an Alternate Configuration File', and enter the name of the configuration file, 'ben_config'.  
+> select 'Save an Alternate Configuration File', and enter the name of the configuration file, '.config'.  
+
 ~~~~
 $ sudo make  
 $ sudo make modules  
 $ sudo make modules_install  
 $ sudo make install  
 ~~~~
+
 > cf) If you want to make faster, then use '-j2' option.(eg. sudo make -j2)
 
 ### 1.2 Install kexec
@@ -75,7 +76,7 @@ $ make
 $ sudo make install  
 $ sudo shutdown -r now  
 ~~~~
-Select linux-3.2.14 from grub menu  
+Throughout booting, select linux-3.2.14 from grub menu  
 
 ## 2. Setup
 ### 2.2 Setup Boot Parameter
@@ -90,14 +91,21 @@ $ sudo ./generate_all.sh
 $ cd ~/popcorn/utils  
 $ sudo vi boot_args_1.args  
 ~~~~
+
 Then, reduce 'mem' value by 100.(This Space will be used to tunnel communication.)  
 >eg) From 'mem=1792M' to 'mem=1692M'  
 
 **Copy command line to grub configuration.**  
+
+~~~~
 $ sudo vi /boot/grub/grub.cfg  
+~~~~
 Copy vty_offset, present_map, mem from boot_args_0.args to end of 3.2.14 kernel parameter.  
 >eg) linux /boot/vmlinuz-3.2.14 root=UUID=a61cf2ed-9318-4ad3-89f0-9dc309101cdd ro vty_offset=0x74000000 present_mask=0 mem=896M  
+
+~~~~
 $ sudo shutdown -r now
+~~~~
 
 ## 3. Boot
 **Check resources first kernel.**  
@@ -129,7 +137,10 @@ $ cd ~/popcorn/utils
 $ sudo ./tunnelize.sh  
 $ ping 10.1.2.2  
 $ ssh user@10.1.2.2  
+~~~~
 password is 'password'  
+
+~~~~
 $ cat /proc/cpuinfo  
 $ cat /proc/meminfo  
 ~~~~
@@ -137,6 +148,6 @@ $ cat /proc/meminfo
 ### 5.2 Virtual Serial
 ~~~~
 $ sudo screen /dev/ttty1 38400  
+~~~~
 **ID**: user  
 **Password**: password  
-~~~~
