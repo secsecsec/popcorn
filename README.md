@@ -2,19 +2,23 @@
 ===============================
 ## <b> Install</b>
 ---------------------------------
-Popcorn Linux is multikernel OS. This System boot second kernel after master kernel.<br>
-Our Test Environment as follows.<br>
+Popcorn Linux is multi-kernel OS. This System boots the second kernel after the master kernel.<br>
+Our test environment is as follows.<br>
 
 <Center>Environment | <Center>Type
 -------- |:-----------
 <center>Hardware | <center>qemu-system-x86_64
 <center>OS | <center>Ubuntu 12.04 server
 <center>Memory (RAM)| <center>2048MB
+<center>Storage | <center>16GB
 <center>CPUs | <center>2
 
 ### 1.1 Install Kernel
 <b>Install Package for Kernel Compile</b><br>
 $ sudo apt-get update<br>
+(<br>
+ $ sudo rm -rf /var/lib/apt/lists/*<br>
+)
 $ sudo apt-get install make libncurses5-dev git gawk
 
 <b>Download Popcorn Linux Patch File and utils</b><br>
@@ -32,8 +36,12 @@ $ tar -zxf linux-3.2.14.tar.gz<br>
 $ cd ~/linux/linux-3.2.14<br>
 $ patch -p1 < ~/popcorn/PopcornLinux.patch<br>
 $ sudo make menuconfig<br>
-Load benconfig file and Exit.<br>
-$ sudo make<br>
+Load 'ben_config' file, save '.config' file and Exit.<br>
+1. select 'Load an Alternate Configuration File', 
+and enter the name of the configuration file, 'ben_config'.<br>
+2. select 'Save an Alternate Configuration File', 
+and enter the name of the configuration file, '.config'.<br>
+$ sudo make -j2<br>
 $ sudo make modules<br>
 $ sudo make modules_install<br>
 $ sudo make install
@@ -65,7 +73,7 @@ $ sudo vi boot_args_1.args<br>
 Then, Reduce mem to 100M(This Space will be used to tunnel communication.)<br>
 ex) mem=1792M ==> mem=1692M<br><br>
 <b>Copy command line to grub configuration.<br></b>
-$ sudo vi /boot/grub/grub.conf<br>
+$ sudo vi /boot/grub/grub.cfg<br>
 Copy vty_offset, present_map, mem from boot_args_0.args to end of 3.2.14 kernel parameter.<br>
 ex) linux /boot/vmlinuz-3.2.14 root=UUID=a61cf2ed-9318-4ad3-89f0-9dc309101cdd ro vty_offset=0x74000000 present_mask=0 mem=896M<br>
 $ sudo shutdown -r now
@@ -76,7 +84,7 @@ $ cat /proc/meminfo<br>
 ## 4. Boot Second Kernel
 ### 4.1 Create Second Kernel Image
 $ cd ~/popcorn/utils<br>
-$ sudo create_elf.sh ~/linux/linux-3.2.14/vmlinux<br>
+$ sudo ./create_elf.sh ~/linux/linux-3.2.14/vmlinux<br>
 $ ls vmlinux.elf
 ### 4.2 Boot Second Kernel
 <b>Now, Boot Second Kernel<br></b>
@@ -89,9 +97,9 @@ $ cd ~/popcorn/utils<br>
 $ ./tunnelize.sh<br>
 $ ping 10.1.2.2<br>
 $ ssh user@10.1.2.2<br>
-Password is 'password'
+Password is 'password'<br>
 $ cat /proc/cpuinfo<br>
 $ cat /proc/meminfo<br>
 ### 5.2 Virtual Serial
-$ sudo screen /dev/ttty1 38400
+$ sudo screen /dev/ttty1 38400<br>
 <b>ID: user Password: password<b>
