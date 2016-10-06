@@ -88,8 +88,10 @@ $ sudo ./mklinux_boot.sh 1<br>
 $ cd ~/popcorn/utils<br>
 $ ./tunnelize.sh<br>
 $ ping 10.1.2.2<br>
-$ ssh root@10.1.2.2<br>
-Root has no passward. So, Press only 'Enter Key'.
+$ ssh user@10.1.2.2<br>
+Password is 'password'
 $ cat /proc/cpuinfo<br>
 $ cat /proc/meminfo<br>
 ### 5.2 Virtual Serial
+$ sudo screen /dev/ttty1 38400
+<b>ID: user Password: password<b>
