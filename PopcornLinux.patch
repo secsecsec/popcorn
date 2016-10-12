@@ -997,7 +997,12 @@ index 9f548cb..d03e97e 100644
 +	else
 +		boot_error = wakeup_secondary_cpu_via_init(apicid, start_ip);
 +
-+	if (!boot_error) {
++	if(boot_error) {
++		pr_err("Popcorn: boot error!!!\n");
++		return -1;
++	}
++
++	if(!boot_error) {
 +
 +		/*
 +		 * Wait 5s total for a response
@@ -1028,14 +1033,10 @@ index 9f548cb..d03e97e 100644
 +		}
 +	}
 +
-+	if (boot_error) {
-+		pr_err("Popcorn: boot error!!!\n");
-+	}
-+
 +	/* mark "stuck" area as not stuck */
 +	*(volatile u32 *)TRAMPOLINE_SYM_BSP(trampoline_status_bsp) = 0;
 +
-+	return boot_error;
++	return apicid;
 +}
 +
 +
