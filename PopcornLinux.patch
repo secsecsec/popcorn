@@ -1040,7 +1040,6 @@ index 9f548cb..d03e97e 100644
 +}
 +
 +
-+
  /*
   * NOTE - on most systems this is a PHYSICAL apic ID, but on multiquad
   * (ie clustered apic addressing mode), this is a LOGICAL apic ID.
