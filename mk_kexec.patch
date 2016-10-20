@@ -1,8 +1,6 @@
-diff --git a/bootstrap b/bootstrap
-new file mode 100755
-index 0000000..fc9837d
---- /dev/null
-+++ b/bootstrap
+diff -Naur kexec-tools-2.0.3/bootstrap kexec-tools-2.0.3_fix/bootstrap
+--- kexec-tools-2.0.3/bootstrap	1970-01-01 09:00:00.000000000 +0900
++++ kexec-tools-2.0.3_fix/bootstrap	2016-10-20 15:24:38.254872072 +0900
 @@ -0,0 +1,27 @@
 +#! /bin/sh
 +# bootstrap -- Use this script to create generated files from the CVS dist
@@ -31,11 +29,10 @@ index 0000000..fc9837d
 +autoconf
 +
 +## @end 1
-diff --git a/configure.ac b/configure.ac
-index 78dda4b..401b11e 100644
---- a/configure.ac
-+++ b/configure.ac
-@@ -4,7 +4,7 @@ dnl
+diff -Naur kexec-tools-2.0.3/configure.ac kexec-tools-2.0.3_fix/configure.ac
+--- kexec-tools-2.0.3/configure.ac	2012-01-16 07:17:28.000000000 +0900
++++ kexec-tools-2.0.3_fix/configure.ac	2016-10-20 15:24:38.254872072 +0900
+@@ -4,7 +4,7 @@
  dnl 
  
  dnl ---Required
@@ -44,11 +41,9 @@ index 78dda4b..401b11e 100644
  AC_CONFIG_AUX_DIR(./config)
  AC_CONFIG_HEADERS([include/config.h])
  AC_LANG(C)
-diff --git a/doc/mpc85xx.txt b/doc/mpc85xx.txt
-new file mode 100644
-index 0000000..eca56bf
---- /dev/null
-+++ b/doc/mpc85xx.txt
+diff -Naur kexec-tools-2.0.3/doc/mpc85xx.txt kexec-tools-2.0.3_fix/doc/mpc85xx.txt
+--- kexec-tools-2.0.3/doc/mpc85xx.txt	1970-01-01 09:00:00.000000000 +0900
++++ kexec-tools-2.0.3_fix/doc/mpc85xx.txt	2016-10-20 15:24:38.254872072 +0900
 @@ -0,0 +1,190 @@
 +			  mpc85xx kexec howto
 +			  -------------------
@@ -240,10 +235,9 @@ index 0000000..eca56bf
 +
 +You might need to copy these files elsewhere or setup your ramdisk to do these
 +things automatically.
-diff --git a/include/config.h b/include/config.h
-index eb61fed..0bfb094 100644
---- a/include/config.h
-+++ b/include/config.h
+diff -Naur kexec-tools-2.0.3/include/config.h kexec-tools-2.0.3_fix/include/config.h
+--- kexec-tools-2.0.3/include/config.h	2012-01-16 07:17:53.000000000 +0900
++++ kexec-tools-2.0.3_fix/include/config.h	2016-10-20 15:24:38.254872072 +0900
 @@ -14,7 +14,7 @@
  /* #undef HAVE_LIBXENCTRL */
  
@@ -262,11 +256,10 @@ index eb61fed..0bfb094 100644
  
  /* Define to the full name of this package. */
  #define PACKAGE_NAME "kexec-tools"
-diff --git a/kdump/Makefile b/kdump/Makefile
-index 1e2b72c..5dfa928 100644
---- a/kdump/Makefile
-+++ b/kdump/Makefile
-@@ -22,7 +22,7 @@ $(KDUMP): $(KDUMP_OBJS)
+diff -Naur kexec-tools-2.0.3/kdump/Makefile kexec-tools-2.0.3_fix/kdump/Makefile
+--- kexec-tools-2.0.3/kdump/Makefile	2010-07-29 18:22:16.000000000 +0900
++++ kexec-tools-2.0.3_fix/kdump/Makefile	2016-10-20 15:24:38.254872072 +0900
+@@ -22,7 +22,7 @@
  
  $(KDUMP_MANPAGE): kdump/kdump.8
  	$(MKDIR) -p     $(MANDIR)/man8
@@ -275,24 +268,10 @@ index 1e2b72c..5dfa928 100644
  echo::
  	@echo "KDUMP_SRCS $(KDUMP_SRCS)"
  	@echo "KDUMP_DEPS $(KDUMP_DEPS)"
-diff --git a/kexec/Makefile b/kexec/Makefile
-index 2137cab..8c815b5 100644
---- a/kexec/Makefile
-+++ b/kexec/Makefile
-@@ -82,7 +82,7 @@ $(KEXEC): CPPFLAGS+=-I$(srcdir)/kexec/arch/$(ARCH)/include
- 
- $(KEXEC_MANPAGE): kexec/kexec.8
- 	@$(MKDIR) -p     $(MANDIR)/man8
--	cp kexec/kexec.8 $(KEXEC_MANPAGE)
-+	cp $^ $(KEXEC_MANPAGE)
- echo::
- 	@echo "KEXEC_SRCS $(KEXEC_SRCS)"
- 	@echo "KEXEC_DEPS $(KEXEC_DEPS)"
-diff --git a/kexec/arch/arm/crashdump-arm.c b/kexec/arch/arm/crashdump-arm.c
-index e9b22bf..213dae2 100644
---- a/kexec/arch/arm/crashdump-arm.c
-+++ b/kexec/arch/arm/crashdump-arm.c
-@@ -219,7 +219,6 @@ static void cmdline_add_mem(char *cmdline, unsigned long size)
+diff -Naur kexec-tools-2.0.3/kexec/arch/arm/crashdump-arm.c kexec-tools-2.0.3_fix/kexec/arch/arm/crashdump-arm.c
+--- kexec-tools-2.0.3/kexec/arch/arm/crashdump-arm.c	2011-10-03 07:56:38.000000000 +0900
++++ kexec-tools-2.0.3_fix/kexec/arch/arm/crashdump-arm.c	2016-10-20 15:24:38.254872072 +0900
+@@ -219,7 +219,6 @@
  	cmdline[COMMAND_LINE_SIZE - 1] = '\0';
  }
  
@@ -300,7 +279,7 @@ index e9b22bf..213dae2 100644
  static unsigned long long range_size(const struct memory_range *r)
  {
  	return r->end - r->start + 1;
-@@ -229,6 +228,9 @@ static void dump_memory_ranges(void)
+@@ -229,6 +228,9 @@
  {
  	int i;
  
@@ -310,7 +289,7 @@ index e9b22bf..213dae2 100644
  	dbgprintf("crashkernel: [%#llx - %#llx] (%ldM)\n",
  		  crash_reserved_mem.start, crash_reserved_mem.end,
  		  (unsigned long)range_size(&crash_reserved_mem) >> 20);
-@@ -239,9 +241,6 @@ static void dump_memory_ranges(void)
+@@ -239,9 +241,6 @@
  			  r->start, r->end, (unsigned long)range_size(r) >> 20);
  	}
  }
@@ -320,11 +299,9 @@ index e9b22bf..213dae2 100644
  
  /**
   * load_crashdump_segments() - loads additional segments needed for kdump
-diff --git a/kexec/arch/i386/compat_x86_64.S b/kexec/arch/i386/compat_x86_64.S
-new file mode 100644
-index 0000000..f8a04e9
---- /dev/null
-+++ b/kexec/arch/i386/compat_x86_64.S
+diff -Naur kexec-tools-2.0.3/kexec/arch/i386/compat_x86_64.S kexec-tools-2.0.3_fix/kexec/arch/i386/compat_x86_64.S
+--- kexec-tools-2.0.3/kexec/arch/i386/compat_x86_64.S	1970-01-01 09:00:00.000000000 +0900
++++ kexec-tools-2.0.3_fix/kexec/arch/i386/compat_x86_64.S	2016-10-20 15:24:38.254872072 +0900
 @@ -0,0 +1,131 @@
 +/*
 + * kexec: Linux boots Linux
@@ -457,11 +434,10 @@ index 0000000..f8a04e9
 +compat_x86_64_end:
 +compat_x86_64_size:
 +	.long compat_x86_64_end - compat_x86_64
-diff --git a/kexec/arch/i386/crashdump-x86.c b/kexec/arch/i386/crashdump-x86.c
-index 436797a..2af090c 100644
---- a/kexec/arch/i386/crashdump-x86.c
-+++ b/kexec/arch/i386/crashdump-x86.c
-@@ -76,9 +76,7 @@ static int get_kernel_paddr(struct kexec_info *UNUSED(info),
+diff -Naur kexec-tools-2.0.3/kexec/arch/i386/crashdump-x86.c kexec-tools-2.0.3_fix/kexec/arch/i386/crashdump-x86.c
+--- kexec-tools-2.0.3/kexec/arch/i386/crashdump-x86.c	2011-11-21 17:48:53.000000000 +0900
++++ kexec-tools-2.0.3_fix/kexec/arch/i386/crashdump-x86.c	2016-10-20 15:24:38.258872072 +0900
+@@ -76,9 +76,7 @@
  
  	if (parse_iomem_single("Kernel code\n", &start, NULL) == 0) {
  		elf_info->kern_paddr_start = start;
@@ -472,7 +448,7 @@ index 436797a..2af090c 100644
  		return 0;
  	}
  
-@@ -150,10 +148,8 @@ static int get_kernel_vaddr_and_size(struct kexec_info *UNUSED(info),
+@@ -150,10 +148,8 @@
  				/* Align size to page size boundary. */
  				size = (size + align - 1) & (~(align - 1));
  				elf_info->kern_size = size;
@@ -484,7 +460,7 @@ index 436797a..2af090c 100644
  				return 0;
  			}
  		}
-@@ -211,10 +207,8 @@ static int get_crash_memory_ranges(struct memory_range **range, int *ranges,
+@@ -211,10 +207,8 @@
  		if (count != 2)
  			continue;
  		str = line + consumed;
@@ -496,7 +472,7 @@ index 436797a..2af090c 100644
  		/* Only Dumping memory of type System RAM. */
  		if (memcmp(str, "System RAM\n", 11) == 0) {
  			type = RANGE_RAM;
-@@ -290,15 +284,15 @@ static int get_crash_memory_ranges(struct memory_range **range, int *ranges,
+@@ -290,15 +284,15 @@
  	}
  	*range = crash_memory_range;
  	*ranges = memory_ranges;
@@ -516,7 +492,7 @@ index 436797a..2af090c 100644
  	return 0;
  }
  
-@@ -385,17 +379,17 @@ static int add_memmap(struct memory_range *memmap_p, unsigned long long addr,
+@@ -385,17 +379,17 @@
  			memmap_p[j+1] = memmap_p[j];
  		memmap_p[tidx].start = addr;
  		memmap_p[tidx].end = addr + size - 1;
@@ -538,7 +514,7 @@ index 436797a..2af090c 100644
  	return 0;
  }
  
-@@ -471,18 +465,18 @@ static int delete_memmap(struct memory_range *memmap_p, unsigned long long addr,
+@@ -471,18 +465,18 @@
  			memmap_p[j-1] = memmap_p[j];
  		memmap_p[j-1].start = memmap_p[j-1].end = 0;
  	}
@@ -561,7 +537,7 @@ index 436797a..2af090c 100644
  	return 0;
  }
  
-@@ -546,10 +540,10 @@ static int cmdline_add_memmap(char *cmdline, struct memory_range *memmap_p)
+@@ -546,10 +540,10 @@
  			die("Command line overflow\n");
  		strcat(cmdline, str_mmap);
  	}
@@ -576,7 +552,7 @@ index 436797a..2af090c 100644
  	return 0;
  }
  
-@@ -574,10 +568,10 @@ static int cmdline_add_elfcorehdr(char *cmdline, unsigned long addr)
+@@ -574,10 +568,10 @@
  	if (cmdlen > (COMMAND_LINE_SIZE - 1))
  		die("Command line overflow\n");
  	strcat(cmdline, str);
@@ -591,7 +567,7 @@ index 436797a..2af090c 100644
  	return 0;
  }
  
-@@ -606,9 +600,9 @@ static int get_crash_notes(int cpu, uint64_t *addr, uint64_t *len)
+@@ -606,9 +600,9 @@
  
  		*addr = x86__pa(vaddr + (cpu * MAX_NOTE_BYTES));
  		*len = MAX_NOTE_BYTES;
@@ -604,7 +580,7 @@ index 436797a..2af090c 100644
  		fclose(fp);
  		return 0;
  	} else
-@@ -658,10 +652,9 @@ static int cmdline_add_memmap_acpi(char *cmdline, unsigned long start,
+@@ -658,10 +652,9 @@
  		die("Command line overflow\n");
  	strcat(cmdline, str_mmap);
  
@@ -618,7 +594,7 @@ index 436797a..2af090c 100644
  	return 0;
  }
  
-@@ -688,15 +681,12 @@ static void get_backup_area(unsigned long *start, unsigned long *end)
+@@ -688,15 +681,12 @@
  		if (count != 2)
  			continue;
  		str = line + consumed;
@@ -637,7 +613,7 @@ index 436797a..2af090c 100644
  			*start = mstart;
  			*end = mend;
  			fclose(fp);
-@@ -786,7 +776,9 @@ int load_crashdump_segments(struct kexec_info *info, char* mod_cmdline,
+@@ -786,7 +776,9 @@
  	memset(memmap_p, 0, sz);
  	add_memmap(memmap_p, info->backup_src_start, info->backup_src_size);
  	sz = crash_reserved_mem.end - crash_reserved_mem.start +1;
@@ -648,7 +624,7 @@ index 436797a..2af090c 100644
  
  	/* Create a backup region segment to store backup data*/
  	if (!(info->kexec_flags & KEXEC_PRESERVE_CONTEXT)) {
-@@ -798,7 +790,7 @@ int load_crashdump_segments(struct kexec_info *info, char* mod_cmdline,
+@@ -798,7 +790,7 @@
  		dbgprintf("Created backup segment at 0x%lx\n",
  			  info->backup_start);
  		if (delete_memmap(memmap_p, info->backup_start, sz) < 0)
@@ -657,7 +633,7 @@ index 436797a..2af090c 100644
  	}
  
  	/* Create elf header segment and store crash image data. */
-@@ -807,14 +799,14 @@ int load_crashdump_segments(struct kexec_info *info, char* mod_cmdline,
+@@ -807,14 +799,14 @@
  					       crash_memory_range, nr_ranges,
  					       &tmp, &bufsz,
  					       ELF_CORE_HEADER_ALIGN) < 0)
@@ -674,10 +650,9 @@ index 436797a..2af090c 100644
  	}
  	/* the size of the elf headers allocated is returned in 'bufsz' */
  
-diff --git a/kexec/arch/i386/include/arch/options.h b/kexec/arch/i386/include/arch/options.h
-index 990527c..89dbd26 100644
---- a/kexec/arch/i386/include/arch/options.h
-+++ b/kexec/arch/i386/include/arch/options.h
+diff -Naur kexec-tools-2.0.3/kexec/arch/i386/include/arch/options.h kexec-tools-2.0.3_fix/kexec/arch/i386/include/arch/options.h
+--- kexec-tools-2.0.3/kexec/arch/i386/include/arch/options.h	2011-10-03 07:56:38.000000000 +0900
++++ kexec-tools-2.0.3_fix/kexec/arch/i386/include/arch/options.h	2016-10-20 15:24:38.258872072 +0900
 @@ -67,7 +67,6 @@
  	{ "args-elf",		0, NULL, OPT_ARGS_ELF },	\
  	{ "args-linux",		0, NULL, OPT_ARGS_LINUX },	\
@@ -686,11 +661,10 @@ index 990527c..89dbd26 100644
  	{ "module",		1, 0, OPT_MOD },		\
  	{ "real-mode",		0, NULL, OPT_REAL_MODE },
  
-diff --git a/kexec/arch/i386/kexec-beoboot-x86.c b/kexec/arch/i386/kexec-beoboot-x86.c
-index 6d459ae..a65e094 100644
---- a/kexec/arch/i386/kexec-beoboot-x86.c
-+++ b/kexec/arch/i386/kexec-beoboot-x86.c
-@@ -64,8 +64,7 @@ int beoboot_probe(const char *buf, off_t len)
+diff -Naur kexec-tools-2.0.3/kexec/arch/i386/kexec-beoboot-x86.c kexec-tools-2.0.3_fix/kexec/arch/i386/kexec-beoboot-x86.c
+--- kexec-tools-2.0.3/kexec/arch/i386/kexec-beoboot-x86.c	2011-10-03 07:56:38.000000000 +0900
++++ kexec-tools-2.0.3_fix/kexec/arch/i386/kexec-beoboot-x86.c	2016-10-20 15:24:38.258872072 +0900
+@@ -64,8 +64,7 @@
  
  void beoboot_usage(void)
  {
@@ -700,7 +674,7 @@ index 6d459ae..a65e094 100644
  		);
         
  	/* No parameters are parsed */
-@@ -81,14 +80,13 @@ int beoboot_load(int argc, char **argv, const char *buf, off_t UNUSED(len),
+@@ -81,14 +80,13 @@
  	struct beoboot_header bb_header;
  	const char *command_line, *kernel, *initrd;
  
@@ -716,7 +690,7 @@ index 6d459ae..a65e094 100644
  		{ "real-mode",		0, 0, OPT_REAL_MODE },
  		{ 0, 			0, 0, 0 },
  	};
-@@ -97,7 +95,6 @@ int beoboot_load(int argc, char **argv, const char *buf, off_t UNUSED(len),
+@@ -97,7 +95,6 @@
  	/*
  	 * Parse the command line arguments
  	 */
@@ -724,7 +698,7 @@ index 6d459ae..a65e094 100644
  	real_mode_entry = 0;
  	while((opt = getopt_long(argc, argv, short_options, options, 0)) != -1) {
  		switch(opt) {
-@@ -109,9 +106,6 @@ int beoboot_load(int argc, char **argv, const char *buf, off_t UNUSED(len),
+@@ -109,9 +106,6 @@
  		case '?':
  			usage();
  			return -1;
@@ -734,7 +708,7 @@ index 6d459ae..a65e094 100644
  		case OPT_REAL_MODE:
  			real_mode_entry = 1;
  			break;
-@@ -134,7 +128,7 @@ int beoboot_load(int argc, char **argv, const char *buf, off_t UNUSED(len),
+@@ -134,7 +128,7 @@
  		kernel,        bb_header.kernel_size,
  		command_line,  bb_header.cmdline_size,
  		initrd,        bb_header.initrd_size,
@@ -743,10 +717,9 @@ index 6d459ae..a65e094 100644
  
  	return result;
  }
-diff --git a/kexec/arch/i386/kexec-bzImage.c b/kexec/arch/i386/kexec-bzImage.c
-index 29e9165..f6785c0 100644
---- a/kexec/arch/i386/kexec-bzImage.c
-+++ b/kexec/arch/i386/kexec-bzImage.c
+diff -Naur kexec-tools-2.0.3/kexec/arch/i386/kexec-bzImage.c kexec-tools-2.0.3_fix/kexec/arch/i386/kexec-bzImage.c
+--- kexec-tools-2.0.3/kexec/arch/i386/kexec-bzImage.c	2011-10-03 07:56:38.000000000 +0900
++++ kexec-tools-2.0.3_fix/kexec/arch/i386/kexec-bzImage.c	2016-10-20 15:24:38.258872072 +0900
 @@ -38,6 +38,7 @@
  #include "x86-linux-setup.h"
  #include "crashdump-x86.h"
@@ -755,7 +728,7 @@ index 29e9165..f6785c0 100644
  
  static const int probe_debug = 0;
  
-@@ -85,8 +86,7 @@ int bzImage_probe(const char *buf, off_t len)
+@@ -85,8 +86,7 @@
  
  void bzImage_usage(void)
  {
@@ -765,7 +738,7 @@ index 29e9165..f6785c0 100644
  		"    --command-line=STRING Set the kernel command line to STRING.\n"
  		"    --append=STRING       Set the kernel command line to STRING.\n"
  		"    --reuse-cmdline       Use kernel command line from running system.\n"
-@@ -100,7 +100,7 @@ int do_bzImage_load(struct kexec_info *info,
+@@ -100,7 +100,7 @@
  	const char *kernel, off_t kernel_len,
  	const char *command_line, off_t command_line_len,
  	const char *initrd, off_t initrd_len,
@@ -774,7 +747,7 @@ index 29e9165..f6785c0 100644
  {
  	struct x86_linux_header setup_header;
  	struct x86_linux_param_header *real_mode;
-@@ -238,6 +238,7 @@ int do_bzImage_load(struct kexec_info *info,
+@@ -238,6 +238,7 @@
  	/* The main kernel segment */
  	size = kernel_len - kern16_size;
  
@@ -782,7 +755,7 @@ index 29e9165..f6785c0 100644
  	if (real_mode->protocol_version >=0x0205 && relocatable_kernel) {
  		/* Relocatable bzImage */
  		unsigned long kern_align = real_mode->kernel_alignment;
-@@ -254,12 +255,29 @@ int do_bzImage_load(struct kexec_info *info,
+@@ -254,12 +255,29 @@
  						1);
  	}
  	else {
@@ -815,7 +788,7 @@ index 29e9165..f6785c0 100644
  
  	/* Tell the kernel what is going on */
  	setup_linux_bootloader_parameters(info, real_mode, setup_base,
-@@ -297,7 +315,7 @@ int do_bzImage_load(struct kexec_info *info,
+@@ -297,7 +315,7 @@
  		printf("Starting the kernel in real mode\n");
  		regs32.eip = elf_rel_get_addr(&info->rhdr, "entry16");
  	}
@@ -824,7 +797,7 @@ index 29e9165..f6785c0 100644
  		unsigned long entry16_debug, pre32, first32;
  		uint32_t old_first32;
  		/* Find the location of the symbols */
-@@ -338,14 +356,13 @@ int bzImage_load(int argc, char **argv, const char *buf, off_t len,
+@@ -338,14 +356,13 @@
  	char *ramdisk_buf;
  	off_t ramdisk_length;
  	int command_line_len;
@@ -840,7 +813,7 @@ index 29e9165..f6785c0 100644
  		{ "command-line",	1, 0, OPT_APPEND },
  		{ "append",		1, 0, OPT_APPEND },
  		{ "reuse-cmdline",	0, 0, OPT_REUSE_CMDLINE },
-@@ -356,10 +373,6 @@ int bzImage_load(int argc, char **argv, const char *buf, off_t len,
+@@ -356,10 +373,6 @@
  	};
  	static const char short_options[] = KEXEC_ARCH_OPT_STR "d";
  
@@ -851,7 +824,7 @@ index 29e9165..f6785c0 100644
  	real_mode_entry = 0;
  	ramdisk = 0;
  	ramdisk_length = 0;
-@@ -373,8 +386,6 @@ int bzImage_load(int argc, char **argv, const char *buf, off_t len,
+@@ -373,8 +386,6 @@
  		case '?':
  			usage();
  			return -1;
@@ -860,7 +833,7 @@ index 29e9165..f6785c0 100644
  			break;
  		case OPT_APPEND:
  			append = optarg;
-@@ -403,7 +414,7 @@ int bzImage_load(int argc, char **argv, const char *buf, off_t len,
+@@ -403,7 +414,7 @@
  		buf, len,
  		command_line, command_line_len,
  		ramdisk_buf, ramdisk_length,
@@ -869,11 +842,10 @@ index 29e9165..f6785c0 100644
  
  	free(command_line);
  	return result;
-diff --git a/kexec/arch/i386/kexec-x86.h b/kexec/arch/i386/kexec-x86.h
-index aca1841..dfcc51d 100644
---- a/kexec/arch/i386/kexec-x86.h
-+++ b/kexec/arch/i386/kexec-x86.h
-@@ -70,7 +70,7 @@ int do_bzImage_load(struct kexec_info *info,
+diff -Naur kexec-tools-2.0.3/kexec/arch/i386/kexec-x86.h kexec-tools-2.0.3_fix/kexec/arch/i386/kexec-x86.h
+--- kexec-tools-2.0.3/kexec/arch/i386/kexec-x86.h	2011-10-03 07:56:38.000000000 +0900
++++ kexec-tools-2.0.3_fix/kexec/arch/i386/kexec-x86.h	2016-10-20 15:24:38.258872072 +0900
+@@ -70,7 +70,7 @@
  	const char *kernel, off_t kernel_len,
  	const char *command_line, off_t command_line_len,
  	const char *initrd, off_t initrd_len,
@@ -882,10 +854,9 @@ index aca1841..dfcc51d 100644
  
  int beoboot_probe(const char *buf, off_t len);
  int beoboot_load(int argc, char **argv, const char *buf, off_t len,
-diff --git a/kexec/arch/i386/x86-linux-setup.c b/kexec/arch/i386/x86-linux-setup.c
-index 0528cea..b7ab8ea 100644
---- a/kexec/arch/i386/x86-linux-setup.c
-+++ b/kexec/arch/i386/x86-linux-setup.c
+diff -Naur kexec-tools-2.0.3/kexec/arch/i386/x86-linux-setup.c kexec-tools-2.0.3_fix/kexec/arch/i386/x86-linux-setup.c
+--- kexec-tools-2.0.3/kexec/arch/i386/x86-linux-setup.c	2011-10-03 07:56:38.000000000 +0900
++++ kexec-tools-2.0.3_fix/kexec/arch/i386/x86-linux-setup.c	2016-10-20 15:24:38.258872072 +0900
 @@ -13,7 +13,6 @@
   * GNU General Public License for more details.
   *
@@ -894,7 +865,7 @@ index 0528cea..b7ab8ea 100644
  #define _GNU_SOURCE
  #include <stdint.h>
  #include <stdio.h>
-@@ -151,9 +150,6 @@ int setup_linux_vesafb(struct x86_linux_param_header *real_mode)
+@@ -151,9 +150,6 @@
  		real_mode->rsvd_pos   = var.transp.offset;
  		real_mode->rsvd_size  = var.transp.length;
  	}
@@ -904,11 +875,10 @@ index 0528cea..b7ab8ea 100644
  	return 0;
  
   out:
-diff --git a/kexec/arch/mips/crashdump-mips.c b/kexec/arch/mips/crashdump-mips.c
-index e90b362..f988698 100644
---- a/kexec/arch/mips/crashdump-mips.c
-+++ b/kexec/arch/mips/crashdump-mips.c
-@@ -60,9 +60,7 @@ static int get_kernel_paddr(struct crash_elf_info *elf_info)
+diff -Naur kexec-tools-2.0.3/kexec/arch/mips/crashdump-mips.c kexec-tools-2.0.3_fix/kexec/arch/mips/crashdump-mips.c
+--- kexec-tools-2.0.3/kexec/arch/mips/crashdump-mips.c	2011-10-03 07:56:38.000000000 +0900
++++ kexec-tools-2.0.3_fix/kexec/arch/mips/crashdump-mips.c	2016-10-20 15:24:38.258872072 +0900
+@@ -60,9 +60,7 @@
  
  	if (parse_iomem_single("Kernel code\n", &start, NULL) == 0) {
  		elf_info->kern_paddr_start = start;
@@ -919,7 +889,7 @@ index e90b362..f988698 100644
  		return 0;
  	}
  
-@@ -82,12 +80,10 @@ static int get_kernel_vaddr_and_size(struct crash_elf_info *elf_info,
+@@ -82,12 +80,10 @@
  					start_offset;
  	if (parse_iomem_single("Kernel data\n", NULL, &end) == 0) {
  		elf_info->kern_size = end - elf_info->kern_paddr_start;
@@ -934,7 +904,7 @@ index e90b362..f988698 100644
  		return 0;
  		}
  	fprintf(stderr, "Cannot determine kernel virtual load addr and  size\n");
-@@ -400,11 +396,9 @@ int load_crashdump_segments(struct kexec_info *info, char* mod_cmdline,
+@@ -400,11 +396,9 @@
  	cmdline_add_elfcorehdr(mod_cmdline, elfcorehdr);
  	cmdline_add_savemaxmem(mod_cmdline, saved_max_mem);
  
@@ -948,24 +918,10 @@ index e90b362..f988698 100644
  	return 0;
  }
  
-diff --git a/kexec/arch/ppc/Makefile b/kexec/arch/ppc/Makefile
-index 3dba7cf..41242a5 100644
---- a/kexec/arch/ppc/Makefile
-+++ b/kexec/arch/ppc/Makefile
-@@ -1,7 +1,7 @@
- #
- # kexec ppc (linux booting linux)
- #
--include kexec/arch/ppc/libfdt/Makefile.libfdt
-+include $(srcdir)/kexec/arch/ppc/libfdt/Makefile.libfdt
- 
- ppc_KEXEC_SRCS =  kexec/arch/ppc/kexec-ppc.c
- ppc_KEXEC_SRCS += kexec/arch/ppc/kexec-elf-ppc.c
-diff --git a/kexec/arch/ppc/crashdump-powerpc.c b/kexec/arch/ppc/crashdump-powerpc.c
-index 7c9dbff..1bef69b 100644
---- a/kexec/arch/ppc/crashdump-powerpc.c
-+++ b/kexec/arch/ppc/crashdump-powerpc.c
-@@ -226,15 +226,15 @@ static int get_crash_memory_ranges(struct memory_range **range, int *ranges)
+diff -Naur kexec-tools-2.0.3/kexec/arch/ppc/crashdump-powerpc.c kexec-tools-2.0.3_fix/kexec/arch/ppc/crashdump-powerpc.c
+--- kexec-tools-2.0.3/kexec/arch/ppc/crashdump-powerpc.c	2011-10-21 16:46:21.000000000 +0900
++++ kexec-tools-2.0.3_fix/kexec/arch/ppc/crashdump-powerpc.c	2016-10-20 15:24:38.258872072 +0900
+@@ -226,15 +226,15 @@
  
  	*range = crash_memory_range;
  	*ranges = memory_ranges;
@@ -985,7 +941,7 @@ index 7c9dbff..1bef69b 100644
  	return 0;
  
  err:
-@@ -289,9 +289,9 @@ static int add_cmdline_param(char *cmdline, unsigned long long addr,
+@@ -289,9 +289,9 @@
  	if (cmdlen > (COMMAND_LINE_SIZE - 1))
  		die("Command line overflow\n");
  	strcat(cmdline, str);
@@ -998,7 +954,7 @@ index 7c9dbff..1bef69b 100644
  	return 0;
  }
  
-@@ -403,10 +403,8 @@ void add_usable_mem_rgns(unsigned long long base, unsigned long long size)
+@@ -403,10 +403,8 @@
  	usablemem_rgns.ranges[usablemem_rgns.size].start = base;
  	usablemem_rgns.ranges[usablemem_rgns.size++].end = end;
  
@@ -1010,10 +966,9 @@ index 7c9dbff..1bef69b 100644
  }
  
  int is_crashkernel_mem_reserved(void)
-diff --git a/kexec/arch/ppc/fixup_dtb.c b/kexec/arch/ppc/fixup_dtb.c
-index 189e0c7..e9890a4 100644
---- a/kexec/arch/ppc/fixup_dtb.c
-+++ b/kexec/arch/ppc/fixup_dtb.c
+diff -Naur kexec-tools-2.0.3/kexec/arch/ppc/fixup_dtb.c kexec-tools-2.0.3_fix/kexec/arch/ppc/fixup_dtb.c
+--- kexec-tools-2.0.3/kexec/arch/ppc/fixup_dtb.c	2011-10-03 07:56:38.000000000 +0900
++++ kexec-tools-2.0.3_fix/kexec/arch/ppc/fixup_dtb.c	2016-10-20 15:24:38.258872072 +0900
 @@ -17,25 +17,26 @@
  
  const char proc_dts[] = "/proc/device-tree";
@@ -1047,7 +1002,7 @@ index 189e0c7..e9890a4 100644
  
  static void fixup_nodes(char *nodes[])
  {
-@@ -201,11 +202,8 @@ static void fixup_reserve_regions(struct kexec_info *info, char *blob_buf)
+@@ -201,11 +202,8 @@
  				"device_type", "cpu", 4);
  	}
  
@@ -1061,7 +1016,7 @@ index 189e0c7..e9890a4 100644
  }
  
  static void fixup_memory(struct kexec_info *info, char *blob_buf)
-@@ -369,23 +367,23 @@ char *fixup_dtb_init(struct kexec_info *info, char *blob_buf, off_t *blob_size,
+@@ -369,23 +367,23 @@
  	return blob_buf;
  }
  
@@ -1090,7 +1045,7 @@ index 189e0c7..e9890a4 100644
  
  char *fixup_dtb_finalize(struct kexec_info *info, char *blob_buf, off_t *blob_size,
  			char *nodes[], char *cmdline)
-@@ -400,9 +398,7 @@ char *fixup_dtb_finalize(struct kexec_info *info, char *blob_buf, off_t *blob_si
+@@ -400,9 +398,7 @@
  	blob_buf = (char *)dt_ops.finalize();
  	*blob_size = fdt_totalsize(blob_buf);
  
@@ -1100,11 +1055,10 @@ index 189e0c7..e9890a4 100644
  
  	return blob_buf;
  }
-diff --git a/kexec/arch/ppc/fs2dt.c b/kexec/arch/ppc/fs2dt.c
-index 733515a..cdae69e 100644
---- a/kexec/arch/ppc/fs2dt.c
-+++ b/kexec/arch/ppc/fs2dt.c
-@@ -273,9 +273,9 @@ static void putprops(char *fn, struct dirent **nlist, int numlist)
+diff -Naur kexec-tools-2.0.3/kexec/arch/ppc/fs2dt.c kexec-tools-2.0.3_fix/kexec/arch/ppc/fs2dt.c
+--- kexec-tools-2.0.3/kexec/arch/ppc/fs2dt.c	2011-10-03 07:56:38.000000000 +0900
++++ kexec-tools-2.0.3_fix/kexec/arch/ppc/fs2dt.c	2016-10-20 15:24:38.258872072 +0900
+@@ -273,9 +273,9 @@
  			memcpy(dt, local_cmdline, cmd_len);
  			len = cmd_len;
  			*dt_len = cmd_len;
@@ -1117,10 +1071,9 @@ index 733515a..cdae69e 100644
  		}
  
  		dt += (len + 3)/4;
-diff --git a/kexec/arch/ppc/include/arch/options.h b/kexec/arch/ppc/include/arch/options.h
-index 0c00ea7..b2176ab 100644
---- a/kexec/arch/ppc/include/arch/options.h
-+++ b/kexec/arch/ppc/include/arch/options.h
+diff -Naur kexec-tools-2.0.3/kexec/arch/ppc/include/arch/options.h kexec-tools-2.0.3_fix/kexec/arch/ppc/include/arch/options.h
+--- kexec-tools-2.0.3/kexec/arch/ppc/include/arch/options.h	2011-10-03 07:56:38.000000000 +0900
++++ kexec-tools-2.0.3_fix/kexec/arch/ppc/include/arch/options.h	2016-10-20 15:24:38.258872072 +0900
 @@ -40,8 +40,7 @@
  	{"initrd",	 1, 0, OPT_APPEND},\
  	{"gamecube",	 1, 0, OPT_GAMECUBE},\
@@ -1131,11 +1084,10 @@ index 0c00ea7..b2176ab 100644
  
  #define KEXEC_ALL_OPT_STR KEXEC_OPT_STR
  
-diff --git a/kexec/arch/ppc/kexec-dol-ppc.c b/kexec/arch/ppc/kexec-dol-ppc.c
-index 8de5293..5fc5e06 100644
---- a/kexec/arch/ppc/kexec-dol-ppc.c
-+++ b/kexec/arch/ppc/kexec-dol-ppc.c
-@@ -311,8 +311,7 @@ int dol_ppc_probe(const char *buf, off_t dol_length)
+diff -Naur kexec-tools-2.0.3/kexec/arch/ppc/kexec-dol-ppc.c kexec-tools-2.0.3_fix/kexec/arch/ppc/kexec-dol-ppc.c
+--- kexec-tools-2.0.3/kexec/arch/ppc/kexec-dol-ppc.c	2011-10-03 07:56:38.000000000 +0900
++++ kexec-tools-2.0.3_fix/kexec/arch/ppc/kexec-dol-ppc.c	2016-10-20 15:24:38.262872072 +0900
+@@ -311,8 +311,7 @@
  void dol_ppc_usage(void)
  {
  	printf
@@ -1145,7 +1097,7 @@ index 8de5293..5fc5e06 100644
  	     "    --append=STRING       Set the kernel command line to STRING.\n");
  
  }
-@@ -339,7 +338,6 @@ int dol_ppc_load(int argc, char **argv, const char *buf, off_t UNUSED(len),
+@@ -339,7 +338,6 @@
  	/* See options.h -- add any more there, too. */
          static const struct option options[] = {
                  KEXEC_ARCH_OPTIONS
@@ -1153,7 +1105,7 @@ index 8de5293..5fc5e06 100644
                  {"command-line", 1, 0, OPT_APPEND},
                  {"append",       1, 0, OPT_APPEND},
                  {0, 0, 0, 0},
-@@ -349,7 +347,6 @@ int dol_ppc_load(int argc, char **argv, const char *buf, off_t UNUSED(len),
+@@ -349,7 +347,6 @@
  	/*
  	 * Parse the command line arguments
  	 */
@@ -1161,7 +1113,7 @@ index 8de5293..5fc5e06 100644
  	command_line = 0;
  	while ((opt = getopt_long(argc, argv, short_options, options, 0)) != -1) {
  		switch (opt) {
-@@ -361,9 +358,6 @@ int dol_ppc_load(int argc, char **argv, const char *buf, off_t UNUSED(len),
+@@ -361,9 +358,6 @@
  		case '?':
  			usage();
  			return -1;
@@ -1171,11 +1123,10 @@ index 8de5293..5fc5e06 100644
  		case OPT_APPEND:
  			command_line = optarg;
  			break;
-diff --git a/kexec/arch/ppc/kexec-ppc.c b/kexec/arch/ppc/kexec-ppc.c
-index 57852dc..6075477 100644
---- a/kexec/arch/ppc/kexec-ppc.c
-+++ b/kexec/arch/ppc/kexec-ppc.c
-@@ -378,9 +378,9 @@ static int get_base_ranges(void)
+diff -Naur kexec-tools-2.0.3/kexec/arch/ppc/kexec-ppc.c kexec-tools-2.0.3_fix/kexec/arch/ppc/kexec-ppc.c
+--- kexec-tools-2.0.3/kexec/arch/ppc/kexec-ppc.c	2011-10-21 16:46:21.000000000 +0900
++++ kexec-tools-2.0.3_fix/kexec/arch/ppc/kexec-ppc.c	2016-10-20 15:24:38.262872072 +0900
+@@ -378,9 +378,9 @@
  	nr_memory_ranges = local_memory_ranges;
  	sort_base_ranges();
  	memory_max = base_memory_range[nr_memory_ranges - 1].end;
@@ -1188,7 +1139,7 @@ index 57852dc..6075477 100644
  	return 0;
  }
  
-@@ -716,13 +716,13 @@ static int get_devtree_details(unsigned long kexec_flags)
+@@ -716,13 +716,13 @@
  
  	sort_ranges();
  
@@ -1205,7 +1156,7 @@ index 57852dc..6075477 100644
  	return 0;
  
  error_openfile:
-@@ -812,13 +812,12 @@ static int setup_memory_ranges(unsigned long kexec_flags)
+@@ -812,13 +812,12 @@
  	} else
  		nr_memory_ranges = j;
  
@@ -1221,10 +1172,16 @@ index 57852dc..6075477 100644
  	return 0;
  
  out:
-diff --git a/kexec/arch/ppc/libfdt-wrapper.c b/kexec/arch/ppc/libfdt-wrapper.c
-index f56ccc0..5fbd3a8 100644
---- a/kexec/arch/ppc/libfdt-wrapper.c
-+++ b/kexec/arch/ppc/libfdt-wrapper.c
+diff -Naur kexec-tools-2.0.3/kexec/arch/ppc/libfdt/TODO kexec-tools-2.0.3_fix/kexec/arch/ppc/libfdt/TODO
+--- kexec-tools-2.0.3/kexec/arch/ppc/libfdt/TODO	1970-01-01 09:00:00.000000000 +0900
++++ kexec-tools-2.0.3_fix/kexec/arch/ppc/libfdt/TODO	2016-10-20 15:24:38.262872072 +0900
+@@ -0,0 +1,3 @@
++- Tree traversal functions
++- Graft function
++- Complete libfdt.h documenting comments
+diff -Naur kexec-tools-2.0.3/kexec/arch/ppc/libfdt-wrapper.c kexec-tools-2.0.3_fix/kexec/arch/ppc/libfdt-wrapper.c
+--- kexec-tools-2.0.3/kexec/arch/ppc/libfdt-wrapper.c	2011-10-03 07:56:38.000000000 +0900
++++ kexec-tools-2.0.3_fix/kexec/arch/ppc/libfdt-wrapper.c	2016-10-20 15:24:38.262872072 +0900
 @@ -27,15 +27,15 @@
  #include <page.h>
  #include <libfdt.h>
@@ -1243,20 +1200,22 @@ index f56ccc0..5fbd3a8 100644
  			printf("%s():%d  %s\n\r", __func__, __LINE__, \
  			       fdt_strerror(err)); \
  		if (BAD_ERROR(err)) \
-diff --git a/kexec/arch/ppc/libfdt/TODO b/kexec/arch/ppc/libfdt/TODO
-new file mode 100644
-index 0000000..288437e
---- /dev/null
-+++ b/kexec/arch/ppc/libfdt/TODO
-@@ -0,0 +1,3 @@
-+- Tree traversal functions
-+- Graft function
-+- Complete libfdt.h documenting comments
-diff --git a/kexec/arch/ppc64/crashdump-ppc64.c b/kexec/arch/ppc64/crashdump-ppc64.c
-index d52b438..30ef443 100644
---- a/kexec/arch/ppc64/crashdump-ppc64.c
-+++ b/kexec/arch/ppc64/crashdump-ppc64.c
-@@ -304,15 +304,15 @@ static int get_crash_memory_ranges(struct memory_range **range, int *ranges)
+diff -Naur kexec-tools-2.0.3/kexec/arch/ppc/Makefile kexec-tools-2.0.3_fix/kexec/arch/ppc/Makefile
+--- kexec-tools-2.0.3/kexec/arch/ppc/Makefile	2011-10-03 07:56:38.000000000 +0900
++++ kexec-tools-2.0.3_fix/kexec/arch/ppc/Makefile	2016-10-20 15:24:38.258872072 +0900
+@@ -1,7 +1,7 @@
+ #
+ # kexec ppc (linux booting linux)
+ #
+-include kexec/arch/ppc/libfdt/Makefile.libfdt
++include $(srcdir)/kexec/arch/ppc/libfdt/Makefile.libfdt
+ 
+ ppc_KEXEC_SRCS =  kexec/arch/ppc/kexec-ppc.c
+ ppc_KEXEC_SRCS += kexec/arch/ppc/kexec-elf-ppc.c
+diff -Naur kexec-tools-2.0.3/kexec/arch/ppc64/crashdump-ppc64.c kexec-tools-2.0.3_fix/kexec/arch/ppc64/crashdump-ppc64.c
+--- kexec-tools-2.0.3/kexec/arch/ppc64/crashdump-ppc64.c	2011-10-03 07:56:38.000000000 +0900
++++ kexec-tools-2.0.3_fix/kexec/arch/ppc64/crashdump-ppc64.c	2016-10-20 15:24:38.262872072 +0900
+@@ -304,15 +304,15 @@
  
  	*range = crash_memory_range;
  	*ranges = memory_ranges;
@@ -1276,7 +1235,7 @@ index d52b438..30ef443 100644
  	return 0;
  
  err:
-@@ -367,9 +367,7 @@ static int add_cmdline_param(char *cmdline, uint64_t addr, char *cmdstr,
+@@ -367,9 +367,7 @@
  	if (cmdlen > (COMMAND_LINE_SIZE - 1))
  		die("Command line overflow\n");
  	strcat(cmdline, str);
@@ -1287,7 +1246,7 @@ index d52b438..30ef443 100644
  	return 0;
  }
  
-@@ -465,12 +463,24 @@ void add_usable_mem_rgns(unsigned long long base, unsigned long long size)
+@@ -465,12 +463,24 @@
  			if (base < ustart && end > uend) {
  				usablemem_rgns.ranges[i].start = base;
  				usablemem_rgns.ranges[i].end = end;
@@ -1312,7 +1271,7 @@ index d52b438..30ef443 100644
  				return;
  			}
  		}
-@@ -478,10 +488,8 @@ void add_usable_mem_rgns(unsigned long long base, unsigned long long size)
+@@ -478,10 +488,8 @@
  	usablemem_rgns.ranges[usablemem_rgns.size].start = base;
  	usablemem_rgns.ranges[usablemem_rgns.size++].end = end;
  
@@ -1324,11 +1283,10 @@ index d52b438..30ef443 100644
  }
  
  int is_crashkernel_mem_reserved(void)
-diff --git a/kexec/arch/ppc64/kexec-elf-ppc64.c b/kexec/arch/ppc64/kexec-elf-ppc64.c
-index ab6da7c..f68f2bc 100644
---- a/kexec/arch/ppc64/kexec-elf-ppc64.c
-+++ b/kexec/arch/ppc64/kexec-elf-ppc64.c
-@@ -149,8 +149,6 @@ int elf_ppc64_load(int argc, char **argv, const char *buf, off_t len,
+diff -Naur kexec-tools-2.0.3/kexec/arch/ppc64/kexec-elf-ppc64.c kexec-tools-2.0.3_fix/kexec/arch/ppc64/kexec-elf-ppc64.c
+--- kexec-tools-2.0.3/kexec/arch/ppc64/kexec-elf-ppc64.c	2011-10-03 07:56:38.000000000 +0900
++++ kexec-tools-2.0.3_fix/kexec/arch/ppc64/kexec-elf-ppc64.c	2016-10-20 15:24:38.262872072 +0900
+@@ -149,8 +149,6 @@
  	if (ramdisk && reuse_initrd)
  		die("Can't specify --ramdisk or --initrd with --reuseinitrd\n");
  
@@ -1337,7 +1295,7 @@ index ab6da7c..f68f2bc 100644
  	/* Need to append some command line parameters internally in case of
  	 * taking crash dumps.
  	 */
-@@ -296,7 +294,7 @@ int elf_ppc64_load(int argc, char **argv, const char *buf, off_t len,
+@@ -296,7 +294,7 @@
  
  	/* Set debug */
  	elf_rel_set_symbol(&info->rhdr, "debug", &my_debug, sizeof(my_debug));
@@ -1346,7 +1304,7 @@ index ab6da7c..f68f2bc 100644
  	my_kernel = 0;
  	my_dt_offset = 0;
  	my_panic_kernel = 0;
-@@ -320,19 +318,18 @@ int elf_ppc64_load(int argc, char **argv, const char *buf, off_t len,
+@@ -320,19 +318,18 @@
  				sizeof(toc_addr));
  	elf_rel_get_symbol(&info->rhdr, "debug", &my_debug, sizeof(my_debug));
  
@@ -1376,11 +1334,10 @@ index ab6da7c..f68f2bc 100644
  
  	for (i = 0; i < info->nr_segments; i++)
  		fprintf(stderr, "segment[%d].mem:%p memsz:%zu\n", i,
-diff --git a/kexec/arch/ppc64/kexec-ppc64.c b/kexec/arch/ppc64/kexec-ppc64.c
-index 48ea421..2f12907 100644
---- a/kexec/arch/ppc64/kexec-ppc64.c
-+++ b/kexec/arch/ppc64/kexec-ppc64.c
-@@ -594,13 +594,12 @@ static int get_devtree_details(unsigned long kexec_flags)
+diff -Naur kexec-tools-2.0.3/kexec/arch/ppc64/kexec-ppc64.c kexec-tools-2.0.3_fix/kexec/arch/ppc64/kexec-ppc64.c
+--- kexec-tools-2.0.3/kexec/arch/ppc64/kexec-ppc64.c	2011-10-03 07:56:38.000000000 +0900
++++ kexec-tools-2.0.3_fix/kexec/arch/ppc64/kexec-ppc64.c	2016-10-20 15:24:38.262872072 +0900
+@@ -594,13 +594,12 @@
  
  	sort_ranges();
  
@@ -1396,7 +1353,7 @@ index 48ea421..2f12907 100644
  	return 0;
  
  error_openfile:
-@@ -687,13 +686,11 @@ int setup_memory_ranges(unsigned long kexec_flags)
+@@ -687,13 +686,11 @@
  	}
  	nr_memory_ranges = j;
  
@@ -1411,11 +1368,10 @@ index 48ea421..2f12907 100644
  	return 0;
  
  out:
-diff --git a/kexec/arch/sh/crashdump-sh.c b/kexec/arch/sh/crashdump-sh.c
-index f3c8c74..68ca756 100644
---- a/kexec/arch/sh/crashdump-sh.c
-+++ b/kexec/arch/sh/crashdump-sh.c
-@@ -142,9 +142,9 @@ static int add_cmdline_param(char *cmdline, uint64_t addr, char *cmdstr,
+diff -Naur kexec-tools-2.0.3/kexec/arch/sh/crashdump-sh.c kexec-tools-2.0.3_fix/kexec/arch/sh/crashdump-sh.c
+--- kexec-tools-2.0.3/kexec/arch/sh/crashdump-sh.c	2011-10-21 16:46:10.000000000 +0900
++++ kexec-tools-2.0.3_fix/kexec/arch/sh/crashdump-sh.c	2016-10-20 15:24:38.262872072 +0900
+@@ -142,9 +142,9 @@
  	if (cmdlen > (COMMAND_LINE_SIZE - 1))
  		die("Command line overflow\n");
  	strcat(cmdline, str);
@@ -1428,11 +1384,21 @@ index f3c8c74..68ca756 100644
  	return 0;
  }
  
-diff --git a/kexec/arch/x86_64/kexec-elf-rel-x86_64.c b/kexec/arch/x86_64/kexec-elf-rel-x86_64.c
-index 8b2e0e5..a1291a6 100644
---- a/kexec/arch/x86_64/kexec-elf-rel-x86_64.c
-+++ b/kexec/arch/x86_64/kexec-elf-rel-x86_64.c
-@@ -60,9 +60,7 @@ static const char *reloc_name(unsigned long r_type)
+diff -Naur kexec-tools-2.0.3/kexec/arch/x86_64/include/arch/options.h kexec-tools-2.0.3_fix/kexec/arch/x86_64/include/arch/options.h
+--- kexec-tools-2.0.3/kexec/arch/x86_64/include/arch/options.h	2011-10-03 07:56:38.000000000 +0900
++++ kexec-tools-2.0.3_fix/kexec/arch/x86_64/include/arch/options.h	2016-10-20 15:24:38.258872072 +0900
+@@ -67,7 +67,6 @@
+ 	{ "args-elf",		0, NULL, OPT_ARGS_ELF },	\
+ 	{ "args-linux",		0, NULL, OPT_ARGS_LINUX },	\
+ 	{ "args-none",		0, NULL, OPT_ARGS_NONE },	\
+-	{ "debug",		0, NULL, OPT_DEBUG },		\
+ 	{ "module",		1, 0, OPT_MOD },		\
+ 	{ "real-mode",		0, NULL, OPT_REAL_MODE },
+ 
+diff -Naur kexec-tools-2.0.3/kexec/arch/x86_64/kexec-elf-rel-x86_64.c kexec-tools-2.0.3_fix/kexec/arch/x86_64/kexec-elf-rel-x86_64.c
+--- kexec-tools-2.0.3/kexec/arch/x86_64/kexec-elf-rel-x86_64.c	2011-10-03 07:56:38.000000000 +0900
++++ kexec-tools-2.0.3_fix/kexec/arch/x86_64/kexec-elf-rel-x86_64.c	2016-10-20 15:24:38.262872072 +0900
+@@ -60,9 +60,7 @@
  void machine_apply_elf_rel(struct mem_ehdr *UNUSED(ehdr), unsigned long r_type,
  	void *location, unsigned long address, unsigned long value)
  {
@@ -1443,11 +1409,10 @@ index 8b2e0e5..a1291a6 100644
  	switch(r_type) {
  	case R_X86_64_NONE:
  		break;
-diff --git a/kexec/crashdump.c b/kexec/crashdump.c
-index 847d080..cdd3ef6 100644
---- a/kexec/crashdump.c
-+++ b/kexec/crashdump.c
-@@ -102,9 +102,8 @@ int get_crash_notes_per_cpu(int cpu, uint64_t *addr, uint64_t *len)
+diff -Naur kexec-tools-2.0.3/kexec/crashdump.c kexec-tools-2.0.3_fix/kexec/crashdump.c
+--- kexec-tools-2.0.3/kexec/crashdump.c	2012-01-10 07:39:39.000000000 +0900
++++ kexec-tools-2.0.3_fix/kexec/crashdump.c	2016-10-20 15:24:38.262872072 +0900
+@@ -102,9 +102,8 @@
  		die("Cannot parse %s: %s\n", crash_notes, strerror(errno));
  	*addr = (uint64_t) temp;
  	*len = MAX_NOTE_BYTES; /* we should get this from the kernel instead */
@@ -1459,153 +1424,10 @@ index 847d080..cdd3ef6 100644
  
  	fclose(fp);
  	return 0;
-diff --git a/kexec/kexec-elf-exec.c b/kexec/kexec-elf-exec.c
-index cb62d04..0e9c360 100644
---- a/kexec/kexec-elf-exec.c
-+++ b/kexec/kexec-elf-exec.c
-@@ -8,6 +8,12 @@
- #include <boot/elf_boot.h>
- #include "kexec.h"
- #include "kexec-elf.h"
-+#include <sys/mman.h>
-+#include <sys/types.h>
-+#include <sys/stat.h>
-+#include <fcntl.h>
-+
-+extern unsigned long mklinux_load_addr;
- 
- static const int probe_debug = 0;
- 
-@@ -70,6 +76,9 @@ int elf_exec_load(struct mem_ehdr *ehdr, struct kexec_info *info)
- 		first = ULONG_MAX;
- 		last  = 0;
- 		align = 0;
-+		
-+		printf("Dynamic executable!\n");
-+
- 		for(i = 0; i < ehdr->e_phnum; i++) {
- 			unsigned long start, stop;
- 			struct mem_phdr *phdr;
-@@ -112,10 +121,27 @@ int elf_exec_load(struct mem_ehdr *ehdr, struct kexec_info *info)
- 
- 	}
- 
-+	printf("base = 0x%lx\n", base);
-+
-+	int mem_fd, mem_offset = (mklinux_load_addr - 0x100000);
-+	void * kernel_base_addr;
-+
-+	mem_fd = open("/dev/mem", O_RDWR | O_SYNC);
-+
-+	printf("Opened /dev/mem, fd %d\n", mem_fd);
-+
-+	kernel_base_addr = mmap(0, 0x1400000, PROT_READ | PROT_WRITE, MAP_SHARED, mem_fd, mklinux_load_addr);
-+
-+	printf("Loading kernel at phys addr 0x%lx, mapped addr 0x%lx\n", 
-+			mklinux_load_addr, kernel_base_addr);
-+
-+	
-+
- 	/* Read in the PT_LOAD segments */
- 	for(i = 0; i < ehdr->e_phnum; i++) {
- 		struct mem_phdr *phdr;
- 		size_t size;
-+		void * addr_to_copy;
- 		phdr = &ehdr->e_phdr[i];
- 		if (phdr->p_type != PT_LOAD) {
- 			continue;
-@@ -124,6 +150,17 @@ int elf_exec_load(struct mem_ehdr *ehdr, struct kexec_info *info)
- 		if (size > phdr->p_memsz) {
- 			size = phdr->p_memsz;
- 		}
-+
-+		printf("Adding PT_LOAD segment %d, size 0x%lx, start 0x%lx\n, address 0x%lx\n", i, size, phdr->p_data, phdr->p_paddr + base);
-+
-+		addr_to_copy = kernel_base_addr + phdr->p_paddr - 0x1000000;
-+
-+		printf("addr_to_copy: 0x%lx\n", addr_to_copy);
-+
-+		memcpy(addr_to_copy, phdr->p_data, size);
-+
-+		printf("Memcopied segment!\n");
-+
- 		add_segment(info,
- 			phdr->p_data, size,
- 			phdr->p_paddr + base, phdr->p_memsz);
-diff --git a/kexec/kexec-elf-rel.c b/kexec/kexec-elf-rel.c
-index f102fb8..c04c972 100644
---- a/kexec/kexec-elf-rel.c
-+++ b/kexec/kexec-elf-rel.c
-@@ -363,8 +363,8 @@ int elf_rel_load(struct mem_ehdr *ehdr, struct kexec_info *info,
- 				name = ehdr->e_shdr[ehdr->e_shstrndx].sh_data;
- 				name += ehdr->e_shdr[sym.st_shndx].sh_name;
- 			}
--#ifdef DEBUG
--			fprintf(stderr, "sym: %10s info: %02x other: %02x shndx: %lx value: %lx size: %lx\n",
-+
-+			dbgprintf("sym: %10s info: %02x other: %02x shndx: %lx value: %lx size: %lx\n",
- 				name,
- 				sym.st_info,
- 				sym.st_other,
-@@ -372,7 +372,6 @@ int elf_rel_load(struct mem_ehdr *ehdr, struct kexec_info *info,
- 				sym.st_value,
- 				sym.st_size);
- 
--#endif
- 			if (sym.st_shndx == STN_UNDEF) {
- 			/*
- 			 * NOTE: ppc64 elf .ro shows up a  UNDEF section.
-@@ -405,10 +404,10 @@ int elf_rel_load(struct mem_ehdr *ehdr, struct kexec_info *info,
- 			value = sym.st_value;
- 			value += sec_base;
- 			value += rel.r_addend;
--#ifdef DEBUG
--			fprintf(stderr, "sym: %s value: %lx addr: %lx\n",
-+
-+			dbgprintf("sym: %s value: %lx addr: %lx\n",
- 				name, value, address);
--#endif
-+
- 			machine_apply_elf_rel(ehdr, rel.r_type,
- 				(void *)location, address, value);
- 		}
-diff --git a/kexec/kexec-syscall.h b/kexec/kexec-syscall.h
-index f4df45c..4d74c51 100644
---- a/kexec/kexec-syscall.h
-+++ b/kexec/kexec-syscall.h
-@@ -75,6 +75,14 @@ static inline long kexec_reboot(void)
- 	return (long) syscall(__NR_reboot, LINUX_REBOOT_MAGIC1, LINUX_REBOOT_MAGIC2, LINUX_REBOOT_CMD_KEXEC, 0);
- }
- 
-+/* MKLINUX */
-+#define __NR_multikernel_boot 312
-+#define LINUX_REBOOT_CMD_MKBSP 0xDEAD5E55
-+static inline long kexec_boot(int cpu, unsigned long kernel_start_address)
-+{
-+	return (long) syscall(__NR_multikernel_boot, cpu, kernel_start_address);
-+}
-+
- 
- #define KEXEC_ON_CRASH		0x00000001
- #define KEXEC_PRESERVE_CONTEXT	0x00000002
-diff --git a/kexec/kexec-uImage.c b/kexec/kexec-uImage.c
-index 409e516..83e7910 100644
---- a/kexec/kexec-uImage.c
-+++ b/kexec/kexec-uImage.c
-@@ -72,7 +72,7 @@ int uImage_probe(const unsigned char *buf, off_t len, unsigned int arch)
- 		return -1;
- 	}
- #ifdef HAVE_LIBZ
--	crc = crc32(0, (void *)buf + sizeof(header), len - sizeof(header));
-+	crc = crc32(0, (void *)buf + sizeof(header), be32_to_cpu(header.ih_size));
- 	if (crc != be32_to_cpu(header.ih_dcrc)) {
- 		printf("The data CRC does not match. Computed: %08x "
- 				"expected %08x\n", crc,
-diff --git a/kexec/kexec.8 b/kexec/kexec.8
-index da03c40..aff674c 100644
---- a/kexec/kexec.8
-+++ b/kexec/kexec.8
-@@ -71,7 +71,7 @@ It's also possible to invoke
+diff -Naur kexec-tools-2.0.3/kexec/kexec.8 kexec-tools-2.0.3_fix/kexec/kexec.8
+--- kexec-tools-2.0.3/kexec/kexec.8	2010-07-29 18:22:16.000000000 +0900
++++ kexec-tools-2.0.3_fix/kexec/kexec.8	2016-10-20 15:24:38.266872072 +0900
+@@ -71,7 +71,7 @@
  .B kexec
  without an option parameter. In that case, kexec loads the specified
  kernel and then invokes
@@ -1614,7 +1436,7 @@ index da03c40..aff674c 100644
  If the shutdown scripts of your Linux distribution support
  kexec-based rebooting, they then call
  .B kexec
-@@ -105,13 +105,13 @@ command:
+@@ -105,13 +105,13 @@
  .SH OPTIONS
  .TP
  .B \-e\ (\-\-exec)
@@ -1630,10 +1452,9 @@ index da03c40..aff674c 100644
  (contrary to the default action without any option parameter). This option
  performs the same actions like executing
  .IR -l
-diff --git a/kexec/kexec.c b/kexec/kexec.c
-index abbe940..86194d9 100644
---- a/kexec/kexec.c
-+++ b/kexec/kexec.c
+diff -Naur kexec-tools-2.0.3/kexec/kexec.c kexec-tools-2.0.3_fix/kexec/kexec.c
+--- kexec-tools-2.0.3/kexec/kexec.c	2011-11-09 09:34:30.000000000 +0900
++++ kexec-tools-2.0.3_fix/kexec/kexec.c	2016-10-20 15:24:38.266872072 +0900
 @@ -49,7 +49,9 @@
  
  unsigned long long mem_min = 0;
@@ -1645,7 +1466,7 @@ index abbe940..86194d9 100644
  
  void die(char *fmt, ...)
  {
-@@ -62,7 +64,7 @@ void die(char *fmt, ...)
+@@ -62,7 +64,7 @@
  	exit(1);
  }
  
@@ -1654,7 +1475,7 @@ index abbe940..86194d9 100644
  {
  	char *new = strdup(str);
  	if (!new)
-@@ -367,6 +369,8 @@ unsigned long add_buffer_phys_virt(struct kexec_info *info,
+@@ -367,6 +369,8 @@
  	if (base == ULONG_MAX) {
  		die("locate_hole failed\n");
  	}
@@ -1663,7 +1484,7 @@ index abbe940..86194d9 100644
  	
  	add_segment_phys_virt(info, buf, bufsz, base, memsz, phys);
  	return base;
-@@ -717,10 +721,20 @@ static int my_load(const char *type, int fileind, int argc, char **argv,
+@@ -717,10 +721,20 @@
  	}
  	info.kexec_flags |= native_arch;
  
@@ -1688,7 +1509,7 @@ index abbe940..86194d9 100644
  	}
  	/* If we are not in native mode setup an appropriate trampoline */
  	if (arch_compat_trampoline(&info) < 0) {
-@@ -765,7 +779,7 @@ static int my_load(const char *type, int fileind, int argc, char **argv,
+@@ -765,7 +779,7 @@
  	return result;
  }
  
@@ -1697,7 +1518,7 @@ index abbe940..86194d9 100644
  {
  	int result;
  	long native_arch;
-@@ -818,6 +832,14 @@ static int my_exec(void)
+@@ -818,6 +832,14 @@
  	return -1;
  }
  
@@ -1712,7 +1533,7 @@ index abbe940..86194d9 100644
  static int kexec_loaded(void);
  
  static int load_jump_back_helper_image(unsigned long kexec_flags, void *entry)
-@@ -878,6 +900,10 @@ void usage(void)
+@@ -878,6 +900,10 @@
  	       "                       specified)\n"
  	       " -l, --load           Load the new kernel into the\n"
  	       "                      current kernel.\n"
@@ -1723,7 +1544,7 @@ index abbe940..86194d9 100644
  	       " -p, --load-panic     Load the new kernel for use on panic.\n"
  	       " -u, --unload         Unload the current kexec target kernel.\n"
  	       "                      If capture kernel is being unloaded\n"
-@@ -893,6 +919,7 @@ void usage(void)
+@@ -893,6 +919,7 @@
  	       "                      context of current kernel during kexec.\n"
  	       "     --load-jump-back-helper Load a helper image to jump back\n"
  	       "                      to original kernel.\n"
@@ -1731,7 +1552,7 @@ index abbe940..86194d9 100644
  	       "\n"
  	       "Supported kernel file types and options: \n");
  	for (i = 0; i < file_types; i++) {
-@@ -1006,7 +1033,7 @@ char *get_command_line(void)
+@@ -1006,7 +1033,7 @@
  }
  
  /* check we retained the initrd */
@@ -1740,7 +1561,7 @@ index abbe940..86194d9 100644
  {
  	char *line = get_command_line();
  
-@@ -1038,6 +1065,9 @@ int main(int argc, char *argv[])
+@@ -1038,6 +1065,9 @@
  {
  	int do_load = 1;
  	int do_exec = 0;
@@ -1750,7 +1571,7 @@ index abbe940..86194d9 100644
  	int do_load_jump_back_helper = 0;
  	int do_shutdown = 1;
  	int do_sync = 1;
-@@ -1066,6 +1096,8 @@ int main(int argc, char *argv[])
+@@ -1066,6 +1096,8 @@
  		case OPT_VERSION:
  			version();
  			return 0;
@@ -1759,7 +1580,7 @@ index abbe940..86194d9 100644
  		case OPT_NOIFDOWN:
  			do_ifdown = 0;
  			break;
-@@ -1130,6 +1162,32 @@ int main(int argc, char *argv[])
+@@ -1130,6 +1162,32 @@
  			do_sync = 0;
  			kexec_flags = KEXEC_ON_CRASH;
  			break;
@@ -1792,7 +1613,7 @@ index abbe940..86194d9 100644
  		case OPT_MEM_MIN:
  			mem_min = strtoul(optarg, &endptr, 0);
  			if (*endptr) {
-@@ -1178,6 +1236,7 @@ int main(int argc, char *argv[])
+@@ -1178,6 +1236,7 @@
  	optind = 1;
  
  	result = arch_process_options(argc, argv);
@@ -1800,7 +1621,7 @@ index abbe940..86194d9 100644
  
  	/* Check for bogus options */
  	if (!do_load) {
-@@ -1220,6 +1279,10 @@ int main(int argc, char *argv[])
+@@ -1220,6 +1279,10 @@
  	if ((result == 0) && do_load_jump_back_helper) {
  		result = my_load_jump_back_helper(kexec_flags, entry);
  	}
@@ -1811,10 +1632,120 @@ index abbe940..86194d9 100644
  
  	fflush(stdout);
  	fflush(stderr);
-diff --git a/kexec/kexec.h b/kexec/kexec.h
-index 9b59890..a612da1 100644
---- a/kexec/kexec.h
-+++ b/kexec/kexec.h
+diff -Naur kexec-tools-2.0.3/kexec/kexec-elf-exec.c kexec-tools-2.0.3_fix/kexec/kexec-elf-exec.c
+--- kexec-tools-2.0.3/kexec/kexec-elf-exec.c	2011-10-03 07:56:38.000000000 +0900
++++ kexec-tools-2.0.3_fix/kexec/kexec-elf-exec.c	2016-10-20 15:26:28.258868899 +0900
+@@ -8,6 +8,12 @@
+ #include <boot/elf_boot.h>
+ #include "kexec.h"
+ #include "kexec-elf.h"
++#include <sys/mman.h>
++#include <sys/types.h>
++#include <sys/stat.h>
++#include <fcntl.h>
++
++extern unsigned long mklinux_load_addr;
+ 
+ static const int probe_debug = 0;
+ 
+@@ -70,6 +76,9 @@
+ 		first = ULONG_MAX;
+ 		last  = 0;
+ 		align = 0;
++		
++		printf("Dynamic executable!\n");
++
+ 		for(i = 0; i < ehdr->e_phnum; i++) {
+ 			unsigned long start, stop;
+ 			struct mem_phdr *phdr;
+@@ -112,10 +121,28 @@
+ 
+ 	}
+ 
++	printf("base = 0x%lx\n", base);
++
++	int mem_fd, mem_offset = (mklinux_load_addr - 0x100000);
++	void * kernel_base_addr;
++
++	mem_fd = open("/dev/mem", O_RDWR | O_SYNC);
++
++	printf("Opened /dev/mem, fd %d\n", mem_fd);
++
++	kernel_base_addr = mmap(0, 0x1400000, PROT_READ | PROT_WRITE, MAP_SHARED, mem_fd, mklinux_load_addr);
++
++	printf("Loading kernel at phys addr 0x%lx, mapped addr 0x%lx\n", 
++			mklinux_load_addr, kernel_base_addr);
++
++	
++
++	unsigned long offset = 0;
+ 	/* Read in the PT_LOAD segments */
+ 	for(i = 0; i < ehdr->e_phnum; i++) {
+ 		struct mem_phdr *phdr;
+ 		size_t size;
++		void * addr_to_copy;
+ 		phdr = &ehdr->e_phdr[i];
+ 		if (phdr->p_type != PT_LOAD) {
+ 			continue;
+@@ -124,6 +151,19 @@
+ 		if (size > phdr->p_memsz) {
+ 			size = phdr->p_memsz;
+ 		}
++
++		printf("Adding PT_LOAD segment %d, size 0x%lx, start 0x%lx\n, address 0x%lx\n", i, size, phdr->p_data, phdr->p_paddr + base);
++
++		if(!offset)
++			offset = phdr->p_paddr;
++		addr_to_copy = kernel_base_addr + phdr->p_paddr - offset;
++
++		printf("addr_to_copy: 0x%lx\n", addr_to_copy);
++
++		memcpy(addr_to_copy, phdr->p_data, size);
++
++		printf("Memcopied segment!\n");
++
+ 		add_segment(info,
+ 			phdr->p_data, size,
+ 			phdr->p_paddr + base, phdr->p_memsz);
+diff -Naur kexec-tools-2.0.3/kexec/kexec-elf-rel.c kexec-tools-2.0.3_fix/kexec/kexec-elf-rel.c
+--- kexec-tools-2.0.3/kexec/kexec-elf-rel.c	2011-10-03 07:56:38.000000000 +0900
++++ kexec-tools-2.0.3_fix/kexec/kexec-elf-rel.c	2016-10-20 15:24:38.266872072 +0900
+@@ -363,8 +363,8 @@
+ 				name = ehdr->e_shdr[ehdr->e_shstrndx].sh_data;
+ 				name += ehdr->e_shdr[sym.st_shndx].sh_name;
+ 			}
+-#ifdef DEBUG
+-			fprintf(stderr, "sym: %10s info: %02x other: %02x shndx: %lx value: %lx size: %lx\n",
++
++			dbgprintf("sym: %10s info: %02x other: %02x shndx: %lx value: %lx size: %lx\n",
+ 				name,
+ 				sym.st_info,
+ 				sym.st_other,
+@@ -372,7 +372,6 @@
+ 				sym.st_value,
+ 				sym.st_size);
+ 
+-#endif
+ 			if (sym.st_shndx == STN_UNDEF) {
+ 			/*
+ 			 * NOTE: ppc64 elf .ro shows up a  UNDEF section.
+@@ -405,10 +404,10 @@
+ 			value = sym.st_value;
+ 			value += sec_base;
+ 			value += rel.r_addend;
+-#ifdef DEBUG
+-			fprintf(stderr, "sym: %s value: %lx addr: %lx\n",
++
++			dbgprintf("sym: %s value: %lx addr: %lx\n",
+ 				name, value, address);
+-#endif
++
+ 			machine_apply_elf_rel(ehdr, rel.r_type,
+ 				(void *)location, address, value);
+ 		}
+diff -Naur kexec-tools-2.0.3/kexec/kexec.h kexec-tools-2.0.3_fix/kexec/kexec.h
+--- kexec-tools-2.0.3/kexec/kexec.h	2011-10-21 16:46:10.000000000 +0900
++++ kexec-tools-2.0.3_fix/kexec/kexec.h	2016-10-20 15:24:38.266872072 +0900
 @@ -57,6 +57,12 @@
  #error unknwon BYTE_ORDER
  #endif
@@ -1828,7 +1759,7 @@ index 9b59890..a612da1 100644
  
  /*
   * This function doesn't actually exist.  The idea is that when someone
-@@ -95,6 +101,13 @@ do { \
+@@ -95,6 +101,13 @@
  } while(0)
  
  extern unsigned long long mem_min, mem_max;
@@ -1842,7 +1773,7 @@ index 9b59890..a612da1 100644
  
  struct kexec_segment {
  	const void *buf;
-@@ -171,6 +184,8 @@ extern int file_types;
+@@ -171,6 +184,8 @@
  #define OPT_FORCE		'f'
  #define OPT_NOIFDOWN		'x'
  #define OPT_EXEC		'e'
@@ -1851,7 +1782,7 @@ index 9b59890..a612da1 100644
  #define OPT_LOAD		'l'
  #define OPT_UNLOAD		'u'
  #define OPT_TYPE		't'
-@@ -194,12 +209,15 @@ extern int file_types;
+@@ -194,12 +209,15 @@
  	{ "load-jump-back-helper", 0, 0, OPT_LOAD_JUMP_BACK_HELPER }, \
  	{ "entry",		1, 0, OPT_ENTRY }, \
  	{ "type",		1, 0, OPT_TYPE }, \
@@ -1868,7 +1799,7 @@ index 9b59890..a612da1 100644
  
  extern void die(char *fmt, ...);
  extern void *xmalloc(size_t size);
-@@ -258,13 +276,6 @@ extern int add_backup_segments(struct kexec_info *info,
+@@ -258,13 +276,6 @@
  
  #define MAX_LINE	160
  
@@ -1882,10 +1813,51 @@ index 9b59890..a612da1 100644
  char *concat_cmdline(const char *base, const char *append);
  
  #endif /* KEXEC_H */
-diff --git a/kexec/purgatory.c b/kexec/purgatory.c
-index 3a48590..ea4a906 100644
---- a/kexec/purgatory.c
-+++ b/kexec/purgatory.c
+diff -Naur kexec-tools-2.0.3/kexec/kexec-syscall.h kexec-tools-2.0.3_fix/kexec/kexec-syscall.h
+--- kexec-tools-2.0.3/kexec/kexec-syscall.h	2011-10-03 07:56:38.000000000 +0900
++++ kexec-tools-2.0.3_fix/kexec/kexec-syscall.h	2016-10-20 15:24:38.266872072 +0900
+@@ -75,6 +75,14 @@
+ 	return (long) syscall(__NR_reboot, LINUX_REBOOT_MAGIC1, LINUX_REBOOT_MAGIC2, LINUX_REBOOT_CMD_KEXEC, 0);
+ }
+ 
++/* MKLINUX */
++#define __NR_multikernel_boot 312
++#define LINUX_REBOOT_CMD_MKBSP 0xDEAD5E55
++static inline long kexec_boot(int cpu, unsigned long kernel_start_address)
++{
++	return (long) syscall(__NR_multikernel_boot, cpu, kernel_start_address);
++}
++
+ 
+ #define KEXEC_ON_CRASH		0x00000001
+ #define KEXEC_PRESERVE_CONTEXT	0x00000002
+diff -Naur kexec-tools-2.0.3/kexec/kexec-uImage.c kexec-tools-2.0.3_fix/kexec/kexec-uImage.c
+--- kexec-tools-2.0.3/kexec/kexec-uImage.c	2011-10-11 20:03:01.000000000 +0900
++++ kexec-tools-2.0.3_fix/kexec/kexec-uImage.c	2016-10-20 15:24:38.266872072 +0900
+@@ -72,7 +72,7 @@
+ 		return -1;
+ 	}
+ #ifdef HAVE_LIBZ
+-	crc = crc32(0, (void *)buf + sizeof(header), len - sizeof(header));
++	crc = crc32(0, (void *)buf + sizeof(header), be32_to_cpu(header.ih_size));
+ 	if (crc != be32_to_cpu(header.ih_dcrc)) {
+ 		printf("The data CRC does not match. Computed: %08x "
+ 				"expected %08x\n", crc,
+diff -Naur kexec-tools-2.0.3/kexec/Makefile kexec-tools-2.0.3_fix/kexec/Makefile
+--- kexec-tools-2.0.3/kexec/Makefile	2011-10-03 07:56:38.000000000 +0900
++++ kexec-tools-2.0.3_fix/kexec/Makefile	2016-10-20 15:24:38.254872072 +0900
+@@ -82,7 +82,7 @@
+ 
+ $(KEXEC_MANPAGE): kexec/kexec.8
+ 	@$(MKDIR) -p     $(MANDIR)/man8
+-	cp kexec/kexec.8 $(KEXEC_MANPAGE)
++	cp $^ $(KEXEC_MANPAGE)
+ echo::
+ 	@echo "KEXEC_SRCS $(KEXEC_SRCS)"
+ 	@echo "KEXEC_DEPS $(KEXEC_DEPS)"
+diff -Naur kexec-tools-2.0.3/kexec/purgatory.c kexec-tools-2.0.3_fix/kexec/purgatory.c
+--- kexec-tools-2.0.3/kexec/purgatory.c	2012-01-16 07:18:01.000000000 +0900
++++ kexec-tools-2.0.3_fix/kexec/purgatory.c	2016-10-20 15:24:38.278872071 +0900
 @@ -2,8 +2,8 @@
  const char purgatory[] = {
  0x7f, 0x45, 0x4c, 0x46, 0x02, 0x01, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -1897,7 +1869,7 @@ index 3a48590..ea4a906 100644
  0x55, 0x53, 0xbb, 0x00, 0x00, 0x00, 0x00, 0x48, 0x81, 0xec, 0x98, 0x00, 0x00, 0x00, 0x48, 0x89,
  0xe7, 0xe8, 0x00, 0x00, 0x00, 0x00, 0x48, 0x8b, 0x53, 0x08, 0x48, 0x8b, 0x33, 0x48, 0x89, 0xe7,
  0x48, 0x83, 0xc3, 0x10, 0xe8, 0x00, 0x00, 0x00, 0x00, 0x48, 0x81, 0xfb, 0x00, 0x00, 0x00, 0x00,
-@@ -243,1303 +243,971 @@ const char purgatory[] = {
+@@ -243,1303 +243,971 @@
  0xc0, 0xee, 0xc3, 0x90, 0xb0, 0xff, 0xe6, 0x21, 0xe6, 0xa1, 0xb0, 0x11, 0xe6, 0x20, 0xe6, 0x80,
  0xb0, 0x08, 0xe6, 0x21, 0xe6, 0x80, 0xb0, 0x01, 0xe6, 0x21, 0xe6, 0x80, 0xb0, 0x11, 0xe6, 0xa0,
  0xe6, 0x80, 0xb0, 0x70, 0xe6, 0xa1, 0xe6, 0x80, 0xb0, 0x01, 0xe6, 0xa1, 0xe6, 0x80, 0x31, 0xc0,
@@ -4165,7 +4137,7 @@ index 3a48590..ea4a906 100644
  0x6f, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
  0xff, 0xff, 0x00, 0x00, 0x00, 0x9a, 0xcf, 0x00, 0xff, 0xff, 0x00, 0x00, 0x00, 0x92, 0xcf, 0x00,
  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-@@ -1617,13 +1285,89 @@ const char purgatory[] = {
+@@ -1617,13 +1285,89 @@
  0x1b, 0x0c, 0x07, 0x08, 0x90, 0x01, 0x00, 0x00, 0x14, 0x00, 0x00, 0x00, 0x1c, 0x00, 0x00, 0x00,
  0x00, 0x00, 0x00, 0x00, 0x31, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
  0x14, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x7a, 0x52, 0x00, 0x01, 0x78, 0x10, 0x01,
@@ -4262,7 +4234,7 @@ index 3a48590..ea4a906 100644
  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-@@ -2560,150 +2304,1669 @@ const char purgatory[] = {
+@@ -2560,150 +2304,1669 @@
  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -6007,7 +5979,7 @@ index 3a48590..ea4a906 100644
  0xfc, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x17, 0x05, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
  0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0xfc, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
  0x1d, 0x05, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00,
-@@ -2753,31 +4016,31 @@ const char purgatory[] = {
+@@ -2753,31 +4016,31 @@
  0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x1c, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
  0x33, 0x06, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00,
  0x5c, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x4e, 0x06, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -6054,7 +6026,7 @@ index 3a48590..ea4a906 100644
  0xdc, 0x06, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0a, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00,
  0xc2, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xfc, 0x06, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
  0x0a, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x38, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-@@ -2789,7 +4052,7 @@ const char purgatory[] = {
+@@ -2789,7 +4052,7 @@
  0x0a, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x20, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
  0x1c, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0a, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00,
  0x30, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd1, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -6063,7 +6035,7 @@ index 3a48590..ea4a906 100644
  0xdc, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0a, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00,
  0x92, 0x0a, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xfc, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
  0x0a, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x5e, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-@@ -2801,20 +4064,20 @@ const char purgatory[] = {
+@@ -2801,20 +4064,20 @@
  0x0a, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x50, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
  0x94, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0a, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00,
  0x56, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x17, 0x0b, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -6092,7 +6064,7 @@ index 3a48590..ea4a906 100644
  0xfb, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xdb, 0x0b, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
  0x02, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x8b, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
  0x3e, 0x0c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00,
-@@ -2829,24 +4092,24 @@ const char purgatory[] = {
+@@ -2829,24 +4092,24 @@
  0x97, 0x0c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00,
  0x8c, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xa1, 0x0c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
  0x02, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x8c, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -6130,7 +6102,7 @@ index 3a48590..ea4a906 100644
  0x32, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00,
  0x30, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x62, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
  0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x60, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-@@ -2877,14 +4140,1148 @@ const char purgatory[] = {
+@@ -2877,14 +4140,1148 @@
  0xa8, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00,
  0xc4, 0x0e, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xd8, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
  0x02, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0xf8, 0x0e, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -7285,7 +7257,7 @@ index 3a48590..ea4a906 100644
  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
  0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x03, 0x00,
-@@ -2899,324 +5296,334 @@ const char purgatory[] = {
+@@ -2899,324 +5296,334 @@
  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x0c, 0x00,
  0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
  0x00, 0x00, 0x00, 0x00, 0x03, 0x00, 0x0d, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
@@ -7923,11 +7895,9 @@ index 3a48590..ea4a906 100644
 +0x73, 0x65, 0x72, 0x69, 0x61, 0x6c, 0x5f, 0x62, 0x61, 0x73, 0x65, 0x00,
  };
  size_t purgatory_size = sizeof(purgatory);
-diff --git a/purgatory/arch/i386/entry16.S b/purgatory/arch/i386/entry16.S
-new file mode 100644
-index 0000000..c4a3dad
---- /dev/null
-+++ b/purgatory/arch/i386/entry16.S
+diff -Naur kexec-tools-2.0.3/purgatory/arch/i386/entry16.S kexec-tools-2.0.3_fix/purgatory/arch/i386/entry16.S
+--- kexec-tools-2.0.3/purgatory/arch/i386/entry16.S	1970-01-01 09:00:00.000000000 +0900
++++ kexec-tools-2.0.3_fix/purgatory/arch/i386/entry16.S	2016-10-20 15:24:38.278872071 +0900
 @@ -0,0 +1,160 @@
 +/*
 + * kexec: Linux boots Linux
@@ -8089,11 +8059,9 @@ index 0000000..c4a3dad
 +	.word	0xffff, 0x0000
 +	.byte	0x00, 0x93, 0x00, 0x00
 +gdt_end:
-diff --git a/purgatory/arch/i386/linux-entry16.S b/purgatory/arch/i386/linux-entry16.S
-new file mode 100644
-index 0000000..7ab0b2a
---- /dev/null
-+++ b/purgatory/arch/i386/linux-entry16.S
+diff -Naur kexec-tools-2.0.3/purgatory/arch/i386/linux-entry16.S kexec-tools-2.0.3_fix/purgatory/arch/i386/linux-entry16.S
+--- kexec-tools-2.0.3/purgatory/arch/i386/linux-entry16.S	1970-01-01 09:00:00.000000000 +0900
++++ kexec-tools-2.0.3_fix/purgatory/arch/i386/linux-entry16.S	2016-10-20 15:24:38.278872071 +0900
 @@ -0,0 +1,623 @@
 +/*
 + * kexec: Linux boots Linux
@@ -8718,11 +8686,9 @@ index 0000000..7ab0b2a
 +	.long setup16_debug_end - setup16_debug_start
 +setup16_debug_align:
 +	.long 16
-diff --git a/purgatory/arch/i386/timer.c b/purgatory/arch/i386/timer.c
-new file mode 100644
-index 0000000..7a4bdaa
---- /dev/null
-+++ b/purgatory/arch/i386/timer.c
+diff -Naur kexec-tools-2.0.3/purgatory/arch/i386/timer.c kexec-tools-2.0.3_fix/purgatory/arch/i386/timer.c
+--- kexec-tools-2.0.3/purgatory/arch/i386/timer.c	1970-01-01 09:00:00.000000000 +0900
++++ kexec-tools-2.0.3_fix/purgatory/arch/i386/timer.c	2016-10-20 15:24:38.278872071 +0900
 @@ -0,0 +1,9 @@
 +#include <purgatory.h>
 +#include "purgatory-x86.h"
@@ -8733,11 +8699,10 @@ index 0000000..7a4bdaa
 +	/* Load the legacy timer settings into the 8254 pit */
 +}
 +
-diff --git a/vmcore-dmesg/Makefile b/vmcore-dmesg/Makefile
-index 5a6d84a..42c218a 100644
---- a/vmcore-dmesg/Makefile
-+++ b/vmcore-dmesg/Makefile
-@@ -21,7 +21,7 @@ $(VMCORE_DMESG): $(VMCORE_DMESG_OBJS)
+diff -Naur kexec-tools-2.0.3/vmcore-dmesg/Makefile kexec-tools-2.0.3_fix/vmcore-dmesg/Makefile
+--- kexec-tools-2.0.3/vmcore-dmesg/Makefile	2011-10-03 07:56:38.000000000 +0900
++++ kexec-tools-2.0.3_fix/vmcore-dmesg/Makefile	2016-10-20 15:24:38.282872071 +0900
+@@ -21,7 +21,7 @@
  
  $(VMCORE_DMESG_MANPAGE): vmcore-dmesg/vmcore-dmesg.8
  	$(MKDIR) -p     $(MANDIR)/man8
