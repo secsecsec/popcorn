@@ -58,24 +58,6 @@ $ sudo make install
 
 > cf) If you want to make faster, then use '-j2' option.(eg. sudo make -j2)
 
-### 1.2 Install kexec
-**Download kexec 2.0.3**  
-~~~~
-$ mkdir ~/kexec  
-$ cd ~/kexec  
-$ wget https://www.kernel.org/pub/linux/utils/kernel/kexec/kexec-tools-2.0.3.tar.gz  
-$ tar -zxf kexec-tools-2.0.3.tar.gz  
-~~~~
-
-**Patch and Install kexec**  
-~~~~
-$ cd kexec-tools-2.0.3  
-$ patch -p1 < ~/popcorn/mk_kexec.patch  
-$ ./configure  
-$ make  
-$ sudo make install  
-$ sudo shutdown -r now  
-~~~~
 Throughout booting, select linux-3.2.14 from grub menu  
 
 ## 2. Setup
